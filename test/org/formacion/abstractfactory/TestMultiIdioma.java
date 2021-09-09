@@ -9,30 +9,25 @@ public class TestMultiIdioma {
 	@Test
 	public void test_es() {
 
+		SentenciaFactory sentenciaFactory = SentenciaMaker.makeSentencia(SentenciaMaker.Idioma.ESP);
+		
+		assertEquals("¿qué hora es?", sentenciaFactory.preguntar().preguntaHora() );
+		assertEquals("¿qué tiempo hace?", sentenciaFactory.preguntar().preguntaTiempo() );
 
-
-		Preguntas preguntas = SentenciaMaker.makeSentencia(SentenciaMaker.Idioma.ESP).preguntar();
 		
-		assertEquals("¿qué hora es?", preguntas.preguntaHora() );
-		assertEquals("¿qué tiempo hace?", preguntas.preguntaTiempo() );
-		
-		Saludos saludos = SentenciaMaker.makeSentencia(SentenciaMaker.Idioma.ESP).saludar();
-		
-		assertEquals("buenos días", saludos.buenosDias());
-		assertEquals("buenas tardes", saludos.buenasTardes());
+		assertEquals("buenos días", sentenciaFactory.saludar().buenosDias());
+		assertEquals("buenas tardes",sentenciaFactory.saludar().buenasTardes());
 	}
 	
 	@Test
 	public void test_en() {
-		Preguntas preguntas = SentenciaMaker.makeSentencia(SentenciaMaker.Idioma.ENG).preguntar();
+		SentenciaFactory sentenciaFactory = SentenciaMaker.makeSentencia(SentenciaMaker.Idioma.ENG);
 		
-		assertEquals("what time is it?", preguntas.preguntaHora() );
-		assertEquals("how is the weather?", preguntas.preguntaTiempo() );
-		
-		Saludos saludos = SentenciaMaker.makeSentencia(SentenciaMaker.Idioma.ENG).saludar();
-		
-		assertEquals("good morning", saludos.buenosDias());
-		assertEquals("good afternoon", saludos.buenasTardes());
+		assertEquals("what time is it?", sentenciaFactory.preguntar().preguntaHora() );
+		assertEquals("how is the weather?", sentenciaFactory.preguntar().preguntaTiempo() );
+
+		assertEquals("good morning", sentenciaFactory.saludar().buenosDias());
+		assertEquals("good afternoon", sentenciaFactory.saludar().buenasTardes());
 	}
 
 }
